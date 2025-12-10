@@ -1,0 +1,41 @@
+<div class="page-container" *ngIf="task">
+  <div class="header">
+    <button class="back-link" (click)="goBack()">← Back</button>
+  </div>
+  
+  <div class="details-card">
+    <h1>{{ task.title }}</h1>
+    
+    <div class="status-row">
+      <span [class]="'badge ' + getStatusClass(task.status)">
+       {{ formatStatus(task.status) }}
+      </span>
+    </div>
+
+    <p class="desc">{{ task.description }}</p>
+    
+    <p class="meta">Created on {{ task.created_at | date:'medium' }}</p>
+
+    <div class="actions">
+      <button (click)="isModalOpen = true" class="btn-outline">Edit</button>
+      <button (click)="confirmDelete(task.id)" class="btn-outline danger">Delete</button>
+    </div>
+  </div>
+
+  <app-task-modal 
+    *ngIf="isModalOpen" 
+    [taskToEdit]="task"
+    (close)="isModalOpen = false; refreshTask()">
+  </app-task-modal>
+
+    <app-confirmation-modal
+    *ngIf="showDeleteModal"
+    title="Delete Task"
+    message="Are you sure you want to delete this task? This action cannot be undone."
+    confirmText="Yes, Delete"
+    type="danger"
+    (confirm)="onDeleteConfirmed()"
+    (cancel)="onDeleteCanceled()"
+  >
+  </app-confirmation-modal>
+</div>

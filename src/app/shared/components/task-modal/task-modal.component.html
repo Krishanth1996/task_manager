@@ -1,0 +1,34 @@
+<div class="modal-backdrop" (click)="close.emit()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>{{ taskToEdit ? 'Edit Task' : 'Add Task' }}</h2>
+    
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="form-group">
+        <label>Title</label>
+        <input formControlName="title" placeholder="Enter task title" />
+        <small class="error" *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+          Title is required.
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea formControlName="description" rows="3" placeholder="Enter description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Status</label>
+        <select formControlName="status">
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Done">Done</option>
+        </select>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" (click)="close.emit()">Cancel</button>
+        <button type="submit" class="btn-save" [disabled]="form.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="page-container">
+  <div class="controls-card">
+    <div class="search-box">
+      <span class="icon">🔍</span>
+      <input type="text" placeholder="Search" (input)="onSearch($event)" />
+    </div>
+    <div class="sort-box">
+      <label>Sort by</label>
+      <select (change)="onSort($event)">
+        <option value="Title">Title</option>
+        <option value="Date">Date</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="task-list">
+    <div *ngFor="let task of taskService.paginatedTasks()" class="task-card">
+      <div class="card-header">
+        <h3>{{ task.title }}</h3>
+      </div>
+      <div class="card-body">
+        <span [class]="'badge ' + getStatusClass(task.status)">
+          {{ formatStatus(task.status) }}
+        </span>
+        <button class="btn-outline" [routerLink]="['/tasks', task.id]">
+          Details
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-container" *ngIf="taskService.totalPages() > 1">
+    <button
+      *ngFor="let page of pageNumbers"
+      class="page-number"
+      [class.active]="page === taskService.currentPage()"
+      (click)="goToPage(page)"
+    >
+      {{ page }}
+    </button>
+
+    <button
+      class="page-arrow"
+      (click)="nextPage()"
+      [disabled]="taskService.currentPage() === taskService.totalPages()"
+    >
+      &gt;
+    </button>
+  </div>
+
+  <button class="fab-add" (click)="isModalOpen = true" title="Add Task">
+    +
+  </button>
+
+  <app-task-modal *ngIf="isModalOpen" (close)="isModalOpen = false">
+  </app-task-modal>
+
+</div>

@@ -1,0 +1,148 @@
+.page-container {
+  max-width: 450px; 
+  margin: 2rem auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.controls-card {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.sort-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.sort-box select {
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  color: #374151;
+}
+
+.task-card {
+  background: white;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.badge.done { background-color: #d1fae5; color: #065f46; }       
+.badge.in-progress { background-color: #ffedd5; color: #9a3412; } 
+.badge.pending { background-color: #f3f4f6; color: #374151; }   
+
+.btn-outline {
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #374151;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.page-number, .page-arrow {
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  color: #4b5563; 
+  cursor: pointer;
+  padding: 0.5rem;
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px; 
+  transition: all 0.2s;
+}
+
+.page-number.active {
+  background-color: #4361ee; 
+  color: white;
+  font-weight: 600;
+}
+
+.page-number:hover:not(.active), .page-arrow:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+.page-arrow:disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.fab-add {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #4361ee;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
